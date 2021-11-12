@@ -34,8 +34,6 @@ const Login = ({loginFormData, updateLoginForm, login, history}) => {
 }
 
 const mapStateToProps = state => {
-    
-    console.log(state)
 
     return {
         loginFormData: state.loginForm
