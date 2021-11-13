@@ -3,9 +3,12 @@
 import './App.css';
 import React from 'react';
 import {connect} from "react-redux"
+import {Route, withRouter, Routes} from "react-router-dom"
 import Login from "./components/Login.js"
 import {getCurrentUser} from "./actions/currentUser.js"
-import Logout from './components/Logout';
+import Logout from './components/Logout.js';
+import NavBar from './components/NavBar.js';
+
 
 class App extends React.Component {
   
@@ -25,10 +28,20 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <div className = "Welcome-LoggedIn"><h3>{ currentUser ? `Welcome ${currentUser.data.attributes.name}`: "" }</h3></div>
-    
-          <Login/>
-          <Logout />
+          <nav class="navbar navbar-light">{ loggedIn ? <NavBar location={this.props.location}/> : null }</nav>
+          {/* <Login/>
+          <Logout /> */}
         </header>
+        
+        <div className= "main">
+          <div className="routes">
+              <Routes>
+                <Route path='/login' component={Login}/> 
+                <Route path='/logout' component={Logout}/>
+              </Routes>
+          </div>
+        </div>
+
       </div>
     );
 
