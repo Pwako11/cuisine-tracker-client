@@ -5,6 +5,7 @@ import React from 'react';
 import {connect} from "react-redux"
 import Login from "./components/Login.js"
 import {getCurrentUser} from "./actions/currentUser.js"
+import Logout from './components/Logout';
 
 class App extends React.Component {
   
@@ -16,11 +17,17 @@ class App extends React.Component {
 
   render() {
 
+    const {currentUser, loggedIn} = this.props
+
+    console.log ("Logged in", loggedIn)
+    console.log ("Current User", currentUser)
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Welcome to Cuisine Tracker</h1>
+          <div className = "Welcome-LoggedIn"><h3>{ currentUser ? `Welcome ${currentUser.data.attributes.name}`: "" }</h3></div>
+    
           <Login/>
+          <Logout />
         </header>
       </div>
     );
@@ -29,6 +36,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state =>{
+
   return{
     currentUser: state.currentUser,
     loggedIn: !!state.currentUser    
