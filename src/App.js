@@ -8,6 +8,8 @@ import Login from "./components/Login.js"
 import {getCurrentUser} from "./actions/currentUser.js"
 import Logout from './components/Logout.js';
 import NavBar from './components/NavBar.js';
+import Home from "./components/Home.js"
+import MainContainer from "./components/MainContainer.js"
 
 
 class App extends React.Component {
@@ -29,13 +31,13 @@ class App extends React.Component {
         <header className="App-header">
           <div className = "Welcome-LoggedIn"><h3>{ currentUser ? `Welcome ${currentUser.data.attributes.name}`: "" }</h3></div>
           <nav class="navbar navbar-light">{ loggedIn ? <NavBar location={this.props.location}/> : null }</nav>
-          {/* <Login/>
-          <Logout /> */}
+          {loggedIn? <Logout/> : <Login/> }
         </header>
         
         <div className= "main">
           <div className="routes">
               <Routes>
+                <Route exact path='/' render={() => loggedIn ? <MainContainer /> : <Home />} />
                 <Route path='/login' component={Login}/> 
                 <Route path='/logout' component={Logout}/>
               </Routes>
