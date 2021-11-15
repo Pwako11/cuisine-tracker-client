@@ -5,7 +5,8 @@ import React from 'react';
 import {connect} from "react-redux"
 import {Route, withRouter, Routes} from "react-router-dom"
 import Login from "./components/Login.js"
-import {getCurrentUser} from "./actions/currentUser.js"
+import { getCurrentUser } from "./actions/currentUser.js"
+import { getDishes } from './actions/dishes';
 import Logout from './components/Logout.js';
 import NavBar from './components/NavBar.js';
 import Home from "./components/Home.js"
@@ -16,6 +17,7 @@ class App extends React.Component {
   
   componentDidMount(){
     this.props.getCurrentUser()
+    this.props.getDishes()
 
   }
 
@@ -31,7 +33,7 @@ class App extends React.Component {
         <header className="App-header">
           <div className = "Welcome-LoggedIn"><h3>{ currentUser ? `Welcome ${currentUser.data.attributes.name}`: <Login /> }</h3></div>
           <nav class="navbar navbar-light">{ loggedIn ? <NavBar location={this.props.location}/> : null }</nav>
-          
+          {loggedIn ? <MainContainer/> : ""}
         </header>
         
         <div className= "main">
@@ -58,4 +60,4 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps, {getCurrentUser})(App);
+export default connect(mapStateToProps, {getCurrentUser, getDishes})(App);
