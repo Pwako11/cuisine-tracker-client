@@ -29,9 +29,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <div className = "Welcome-LoggedIn"><h3>{ currentUser ? `Welcome ${currentUser.data.attributes.name}`: "" }</h3></div>
+          <div className = "Welcome-LoggedIn"><h3>{ currentUser ? `Welcome ${currentUser.data.attributes.name}`: <Login /> }</h3></div>
           <nav class="navbar navbar-light">{ loggedIn ? <NavBar location={this.props.location}/> : null }</nav>
-          {loggedIn? <Logout/> : <Login/> }
+          
         </header>
         
         <div className= "main">
