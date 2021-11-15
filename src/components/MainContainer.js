@@ -1,7 +1,10 @@
-import React from 'react' 
+import React from 'react'; 
 import {connect} from 'react-redux';
+import Dishes from './Dish.js';
 
 const MainContainer = (props) => {
+
+    console.log("In mainContianer - props", props)
     
     // const wishlistsTag = wishlist.length > 0 ?
     // <h5>Your current wishlist:</h5> : null 
@@ -15,6 +18,7 @@ const MainContainer = (props) => {
     return (
         <div className="mainContainer">
            <p>You are in the main container</p>
+           <Dishes />
 
         </div>
     )
@@ -22,8 +26,8 @@ const MainContainer = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        // dish: state.dish, 
-        // region: state.region
+        dish: state.dish, 
+        region: state.region
     }
 }
 
