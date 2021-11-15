@@ -49,7 +49,7 @@ export const getDishes = () =>{
             if (response.error){
                 alert(response.error)
             }else{
-                dispatch(setDish(response))        
+                dispatch(setDish(response.data))        
             }
         })
         .catch(console.log)
