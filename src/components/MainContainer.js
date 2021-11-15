@@ -14,21 +14,7 @@ const MainContainer = (props) => {
 
     return (
         <div className="mainContainer">
-            {/* <div className= "whislists">
-                {wishlistsTag}
-               <Wishlist/>  
-            </div>
-            
-            <div className= "recommendation">
-                {recommendationTag}
-                <Recommendation />
-            </div>
-            
-            <div className= "reviews">
-                {reviewTag}
-                <Reviews /> */}
-            </div>
-            
+           <p>You are in the main container</p>
 
         </div>
     )
