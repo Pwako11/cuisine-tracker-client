@@ -1,4 +1,5 @@
 import { resetLoginForm } from "./loginForm.js"
+import { getDishes } from "./dishes.js"
 
 
 
@@ -34,6 +35,7 @@ export const login = (credentials, history) =>{
                 alert(response.error)
             }else{
                 dispatch(setCurrentUser(response))
+                dispatch(getDishes())
                 dispatch(resetLoginForm())
          
             }
