@@ -1,23 +1,28 @@
 
 // import logo from './logo.svg';
 import './App.css';
+import {
+  Switch,
+  Route,
+  withRouter
+} from "react-router-dom";
 import React from 'react';
-import {connect} from "react-redux"
-import {Route, withRouter, Routes} from "react-router-dom"
-import Login from "./components/Login.js"
-import { getCurrentUser } from "./actions/currentUser.js"
-import { getDishes } from './actions/dishes';
+import { connect } from "react-redux";
+import Home from "./components/Home.js";
+import Login from "./components/Login.js";
 import Logout from './components/Logout.js';
+import Signup from './components/Signup.js';
 import NavBar from './components/NavBar.js';
-import Home from "./components/Home.js"
-import MainContainer from "./components/MainContainer.js"
+import { getDishes } from './actions/dishes';
+import MainContainer from "./components/MainContainer.js";
+import { getCurrentUser } from "./actions/currentUser.js";
 
 
 class App extends React.Component {
   
   componentDidMount(){
-    this.props.getCurrentUser()
-    this.props.getDishes()
+    // this.props.getCurrentUser()
+    // this.props.getDishes()
 
   }
 
@@ -28,24 +33,33 @@ class App extends React.Component {
 
     console.log ("Logged in", loggedIn)
     console.log ("Current User", currentUser)
-    return (
+    
+
+    return (     
+      
       <div className="App">
         <header className="App-header">
-          <div className = "Welcome-LoggedIn"><h3>{ currentUser ? `Welcome ${currentUser.data.attributes.name}`: <Login /> }</h3></div>
-          <nav class="navbar navbar-light">{ loggedIn ? <NavBar location={this.props.location}/> : null }</nav>
-          {loggedIn ? <MainContainer/> : ""}
-        </header>
-        
-        <div className= "main">
-          <div className="routes">
-              <Routes>
-                <Route exact path='/' render={() => loggedIn ? <MainContainer /> : <Home />} />
-                <Route path='/login' component={Login}/> 
-                <Route path='/logout' component={Logout}/>
-              </Routes>
+          <div className= "welcome">
+            <div className = "Welcome-LoggedIn"><h3>{ currentUser ? `Welcome ${currentUser.data.attributes.name}`: "" }</h3></div>
+            <nav class="navbar navbar-light">{ loggedIn ? <NavBar location={this.props.location}/> : null }</nav>
           </div>
-        </div>
 
+            <div className= "routes">
+              <Switch>
+                <Route exact path="/" render={() => loggedIn ? <MainContainer /> : <Home />} />
+                <Route exact path="/login" component= {Login} />
+                <Route exact path="/logout" component= {Logout} />
+                <Route exact path="/signup" component= {Signup } />   
+            
+              </Switch>
+            </div> 
+
+        </header>
+
+        <div className="main">
+  
+          <div className= "Welcome-Loggedout">{loggedIn ? <MainContainer /> : <Home />}</div>
+        </div>
       </div>
     );
 
@@ -60,4 +74,4 @@ const mapStateToProps = state =>{
   }
 }
 
-export default connect(mapStateToProps, {getCurrentUser, getDishes})(App);
+export default withRouter(connect(mapStateToProps, {getCurrentUser, getDishes})(App));
