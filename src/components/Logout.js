@@ -1,8 +1,9 @@
-import React from 'react' 
-import {connect} from 'react-redux'
-import {logout} from '../actions/currentUser.js'
+import React from 'react'; 
+import {connect} from 'react-redux';
+import {logout} from '../actions/currentUser.js';
+import {withRouter} from "react-router-dom"
 
-const Logout = ({logout, history}) => {     
+const Logout = ({ logout, history }) => {     
 
     return (
         <div>
@@ -18,4 +19,4 @@ const Logout = ({logout, history}) => {
     )
 }
 
-export default connect(null, {logout}) (Logout)
+export default withRouter(connect(null, {logout}) (Logout))
