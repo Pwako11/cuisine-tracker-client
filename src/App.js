@@ -21,8 +21,8 @@ import { getCurrentUser } from "./actions/currentUser.js";
 class App extends React.Component {
   
   componentDidMount(){
-    // this.props.getCurrentUser()
-    // this.props.getDishes()
+    this.props.getCurrentUser()
+    this.props.getDishes()
 
   }
 
