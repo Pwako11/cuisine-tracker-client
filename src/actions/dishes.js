@@ -1,3 +1,6 @@
+import { resetDishForm } from './newDishForm.js'
+
+
 //synchronous action creators 
 
 export const setDish = dish =>{
@@ -51,6 +54,41 @@ export const getDishes = () =>{
             }else{
                 dispatch(setDish(response.data))        
             }
+        })
+        .catch(console.log)
+    }
+}
+
+
+export const createDish = (dishDetails, history) => {
+
+
+    console.log( "create Dish - History", history)
+    return dispatch => {
+
+      const dishInfo = {
+        dish: dishDetails
+      }
+
+      console.log( "you are in createDish", dishInfo)
+
+      return fetch("http://localhost:3010/api/v1/dishes", {
+        credentials: "include",  
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dishInfo)
+      })
+        .then(r => r.json())
+        .then(response => {
+          if (response.error) {
+            alert(response.error)
+          } else {
+            dispatch(setDish(response.data))
+            dispatch(resetDishForm())
+            history.push('/')
+          }
         })
         .catch(console.log)
     }
