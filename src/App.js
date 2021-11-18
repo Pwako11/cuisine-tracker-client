@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import Home from "./components/Home.js";
 import Login from "./components/Login.js";
 import Dishes from './components/Dish.js';
+import DishCard from './components/DishCard.js';
 import NewDishForm from './components/NewDish.js';
 import Logout from './components/Logout.js';
 import Signup from './components/Signup.js';
@@ -31,10 +32,11 @@ class App extends React.Component {
 
   render() {
 
-    const {currentUser, loggedIn} = this.props
+    const {currentUser, loggedIn, dishes} = this.props
 
     console.log ("Logged in", loggedIn)
     console.log ("Current User", currentUser)
+    console.log ("Value of dishesArray", dishes)
     
 
     return (     
@@ -48,13 +50,18 @@ class App extends React.Component {
 
             <div className= "routes">
               <Switch>
-                <Route exact path="/" render={() => loggedIn ? <MainContainer /> : <Home />} />
+                <Route exact path="/" render={({history}) => loggedIn ? <MainContainer history={history} />  : <Home />} />
                 <Route exact path="/login" component= {Login} />
                 <Route exact path="/logout" component= {Logout} />
                 <Route exact path="/signup" component= {Signup } />
                 <Route exact path="/dishes" component= {Dishes } />
                 <Route exact path="/dishes/new" component= {NewDishForm } />
-            
+                <Route exact path="/dishes/:id" render={props =>{
+                  const dish =  dishes.find(rec => rec.id === props.match.params.id)
+                  console.log("Value of dishId", dish)            
+                  return<DishCard dish={dish} {...props}/>
+                  }
+                }/>
               </Switch>
             </div> 
 
@@ -74,7 +81,8 @@ const mapStateToProps = state =>{
 
   return{
     currentUser: state.currentUser,
-    loggedIn: !!state.currentUser    
+    loggedIn: !!state.currentUser,
+    dishes: state.dish    
   }
 }
 

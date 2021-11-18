@@ -6,7 +6,6 @@ import loginForm from './reducers/loginForm.js';
 import dish from './reducers/dish.js';
 import signUpForm from './reducers/signupForm.js';
 import newDishForm from './reducers/newDishForm.js';
-// import { devToolsEnhancer } from 'redux-devtools-extension';
 
 const reducer = combineReducers({
     users: usersReducer,

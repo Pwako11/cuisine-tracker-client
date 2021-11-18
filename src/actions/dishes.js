@@ -61,9 +61,8 @@ export const getDishes = () =>{
 
 
 export const createDish = (dishDetails, history) => {
+    let newData;
 
-
-    console.log( "create Dish - History", history)
     return dispatch => {
 
       const dishInfo = {
@@ -80,15 +79,45 @@ export const createDish = (dishDetails, history) => {
         },
         body: JSON.stringify(dishInfo)
       })
-        .then(r => r.json())
+        .then(response => response.json())
         .then(response => {
           if (response.error) {
             alert(response.error)
           } else {
-            dispatch(setDish(response.data))
-            dispatch(resetDishForm())
-            history.push('/')
-          }
+                newData = response.data
+                dispatch(setDish(response.data));
+                dispatch(resetDishForm());
+                history.push(`/`)
+            }
+        })
+        .catch(console.log)
+    }
+}
+
+export const deleteDish = (dishes, dish, history) => {
+    let updatedDishes; 
+
+    const dishId = dish.id 
+
+    return dispatch => {
+        return fetch(`http://localhost:3010/api/v1/dishes/${dishId}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers:{
+                "Content-Type": "application/json"
+            }
+        })
+        .then( resp => resp.json())
+        .then(response =>{
+            if(response.error){
+                alert(response.error)
+            }else{
+                updatedDishes = dishes.filter( dish => dish.id === dishId ? false : true)
+                dispatch(deleteDishSuccess(dishId))
+                history.push(`/dishes`)
+            }
+        }).then(()=>{
+            dispatch(setDish(updatedDishes))
         })
         .catch(console.log)
     }

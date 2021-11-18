@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { updateDishForm } from '../actions/newDishForm';
 import { createDish } from '../actions/dishes';
 
-
-const NewDishForm = ({updateDishForm, newDishFormData, history }) =>{
+const NewDishForm = ({createDish, updateDishForm, newDishFormData, history }) =>{
 
     const handleRegionInfoInputChange = event =>{
         const {name, value} = event.target
@@ -30,7 +29,7 @@ const NewDishForm = ({updateDishForm, newDishFormData, history }) =>{
 
     const handleSubmit = event => {
         event.preventDefault()
-        createDish(newDishFormData, history)()
+        createDish(newDishFormData, history)
     }
 
     return(

@@ -6,8 +6,6 @@ const MainContainer = ({dish, region}) => {
 
     return (
         <div className="mainContainer">
-           <p>You are in the main container</p>
-           <Dishes />
 
         </div>
     )
