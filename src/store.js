@@ -5,14 +5,16 @@ import currentUser from './reducers/currentUser.js';
 import loginForm from './reducers/loginForm.js';
 import dish from './reducers/dish.js';
 import signUpForm from './reducers/signupForm.js';
+import newDishForm from './reducers/newDishForm.js';
 // import { devToolsEnhancer } from 'redux-devtools-extension';
 
 const reducer = combineReducers({
     users: usersReducer,
+    dish,
     currentUser, 
-    loginForm, 
-    dish, 
-    signUpForm
+    loginForm,  
+    signUpForm, 
+    newDishForm
   })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
