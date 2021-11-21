@@ -7,13 +7,13 @@ const Logout = ({ logout, history }) => {
 
     return (
         <div>
-            <form  class="input-group mb-3" onSubmit={(event) =>{
+            <form  className="input-group mb-3" onSubmit={(event) =>{
                 event.preventDefault()
                 logout()
                 history.push('/')
                 }
             }>
-                <input class="btn btn-outline-secondary" type="submit" value="Log out"/>
+                <input className="btn btn-outline-secondary" type="submit" value="Log out"/>
             </form>
         </div>
     )
