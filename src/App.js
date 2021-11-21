@@ -19,6 +19,7 @@ import NavBar from './components/NavBar.js';
 import { getDishes } from './actions/dishes';
 import MainContainer from "./components/MainContainer.js";
 import { getCurrentUser } from "./actions/currentUser.js";
+import DishMatchForm from './components/DishMatch.js';
 
 
 class App extends React.Component {
@@ -45,7 +46,7 @@ class App extends React.Component {
         <header className="App-header">
           <div className= "welcome">
             <div className = "Welcome-LoggedIn"><h3>{ currentUser ? `Welcome ${currentUser.data.attributes.name}`: "" }</h3></div>
-            <nav class="navbar navbar-light">{ loggedIn ? <NavBar location={this.props.location}/> : null }</nav>
+            <nav className="navbar navbar-light">{ loggedIn ? <NavBar location={this.props.location}/> : null }</nav>
           </div>
 
             <div className= "routes">
@@ -56,6 +57,7 @@ class App extends React.Component {
                 <Route exact path="/signup" component= {Signup } />
                 <Route exact path="/dishes" component= {Dishes } />
                 <Route exact path="/dishes/new" component= {NewDishForm } />
+                <Route exact path="/search" component= {DishMatchForm} />
                 <Route exact path="/dishes/:id" render={props =>{
                   const dish =  dishes.find(rec => rec.id === props.match.params.id)
                   console.log("Value of dishId", dish)            
@@ -66,11 +68,6 @@ class App extends React.Component {
             </div> 
 
         </header>
-
-        <div className="main">
-  
-          <div className= "Welcome-Loggedout">{loggedIn ? <MainContainer /> : <Home />}</div>
-        </div>
       </div>
     );
 
