@@ -10,9 +10,9 @@ const NavBar = ({loggedIn}) => {
     <span>
       <nav className= "nav">
         
-        <NavLink exact class="nav-link" to="/"  >Home  | </NavLink>  
-        <NavLink exact class="nav-link" to="/dishes" > My Dishes | </NavLink>  
-        <NavLink exact class="nav-link" to="/dishes/new"> Add Dish </NavLink>
+        <NavLink exact className="nav-link" to="/"  >Home  | </NavLink>  
+        <NavLink exact className="nav-link" to="/dishes" > My Dishes | </NavLink>  
+        <NavLink exact className="nav-link" to="/dishes/new"> Add Dish </NavLink>
         {loggedIn ? <Logout /> : null}
         
       </nav>
