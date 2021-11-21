@@ -6,6 +6,7 @@ import loginForm from './reducers/loginForm.js';
 import dish from './reducers/dish.js';
 import signUpForm from './reducers/signupForm.js';
 import newDishForm from './reducers/newDishForm.js';
+import dishMatchForm from './reducers/dishMatchForm.js';
 
 const reducer = combineReducers({
     users: usersReducer,
@@ -13,7 +14,8 @@ const reducer = combineReducers({
     currentUser, 
     loginForm,  
     signUpForm, 
-    newDishForm
+    newDishForm, 
+    dishMatchForm
   })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
