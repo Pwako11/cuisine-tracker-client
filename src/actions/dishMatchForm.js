@@ -1,6 +1,6 @@
 // synchronous action creators
 export const updateMatchForm = formData => {
-    console.log("Step 1",  formData)
+    console.log("Step 2",  formData)
     return {
       type: "UPDATE_MATCH_FORM",
       formData
