@@ -34,7 +34,7 @@ const NewDishForm = ({createDish, updateDishForm, newDishFormData, history }) =>
 
     return(
 
-        <form onSubmit={handleSubmit}>
+        <form className="form-control" onSubmit={handleSubmit}>
             
             <input 
                 class="form-control" 
