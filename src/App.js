@@ -33,12 +33,7 @@ class App extends React.Component {
 
   render() {
 
-    const {currentUser, loggedIn, dishes} = this.props
-
-    console.log ("Logged in", loggedIn)
-    console.log ("Current User", currentUser)
-    console.log ("Value of dishesArray", dishes)
-    
+    const {currentUser, loggedIn, dishes} = this.props 
 
     return (     
       
@@ -59,8 +54,7 @@ class App extends React.Component {
                 <Route exact path="/dishes/new" component= {NewDishForm } />
                 <Route exact path="/search" component= {DishMatchForm} />
                 <Route exact path="/dishes/:id" render={props =>{
-                  const dish =  dishes.find(rec => rec.id === props.match.params.id)
-                  console.log("Value of dishId", dish)            
+                  const dish =  dishes.find(rec => rec.id === props.match.params.id)          
                   return<DishCard dish={dish} {...props}/>
                   }
                 }/>
