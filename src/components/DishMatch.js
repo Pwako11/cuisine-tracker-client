@@ -6,10 +6,18 @@ import {updateMatchForm} from '../actions/dishMatchForm.js'
 
 const DishMatchForm = ({updateMatchForm, dishMatchForm, dishList}) =>{
 
-    const searchHeading = dishList.length > 0 ? <h5>Here are items matching your Search</h5> : <h5>No search matches were found</h5>
+    let searchValue = dishMatchForm.content.trim().toLowerCase();
 
-    const dishCards = dishList.length > 0 ?  
-     dishList.map(d => (<li>
+    const filteredDishes = dishList.filter(dish =>{
+        
+        return dish.attributes.name.toLowerCase().includes(searchValue)
+    });
+
+
+    const searchHeading = filteredDishes.length > 0 ? <h5>Here are items matching your Search</h5> : <h5>No search matches were found</h5>
+
+    const dishCards = filteredDishes.length > 0 ?  
+     filteredDishes.map(d => (<li>
          <Link key={d.id} to ={`/dishes/${d.id}`}>{d.attributes.name} </Link><br/>
      </li>))  : null
     
@@ -19,10 +27,8 @@ const DishMatchForm = ({updateMatchForm, dishMatchForm, dishList}) =>{
             ...dishMatchForm,
                 [name]: value
         }
-        
         updateMatchForm(updatedFormInfo)
         
-        console.log("Setp 3", dishMatchForm)
     }
 
     return(
@@ -30,8 +36,6 @@ const DishMatchForm = ({updateMatchForm, dishMatchForm, dishList}) =>{
         <div>
             <form onSubmit={event =>{
                 event.preventDefault()
-                console.log("You are in Search component")
-                console.log(event)
             }}>
                 <label>
                 <textarea name= "content" placeholder="type your selection " onChange={handleChange} type = "text" value= {dishMatchForm.content}/>
