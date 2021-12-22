@@ -33,17 +33,21 @@ const DishMatchForm = ({updateMatchForm, dishMatchForm, dishList}) =>{
 
     return(
 
-        <div>
-            <form onSubmit={event =>{
-                event.preventDefault()
-            }}>
-                <label>
-                <textarea name= "content" placeholder="type your selection " onChange={handleChange} type = "text" value= {dishMatchForm.content}/>
-                </label>
-                <br/>
-                <input type="submit" value= "submit"/>
-            </form>
+        <div className='mainSearch'>
+            
+            <div className='form' >
+                <form className='form-control' onSubmit={event =>{
+                    event.preventDefault()
+                }}>
+                    <label>
+                    <textarea name= "content" placeholder="type your selection " onChange={handleChange} type = "text" value= {dishMatchForm.content}/>
+                    </label>
+                    <br/>
+                    <input class="btn btn-outline-secondary" type="submit" value= "search"/>
+                </form>
 
+            </div>
+            
             <div className='searchResults'>
                 {searchHeading }
                 
@@ -53,6 +57,7 @@ const DishMatchForm = ({updateMatchForm, dishMatchForm, dishList}) =>{
             </div>
 
         </div> 
+
     ) 
 
 }
