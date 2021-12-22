@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import DishCard from './DishCard';
 import {Link} from 'react-router-dom';
 
 const Dishes = ({dishes, history}) => {
