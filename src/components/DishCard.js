@@ -4,8 +4,6 @@ import {deleteDish} from '../actions/dishes.js';
 
 const DishCard = (props) =>{
 
-    console.log("in DishCard - dish", props)
-
 return(
 
     props.dish ?
