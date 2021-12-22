@@ -36,3 +36,57 @@
     transform: rotate(360deg);
   }
 }
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.form-control input {
+  border: 2px solid #c4eccd;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.form-control input:focus {
+  outline: 0;
+  border-color: #66aae2;
+}
+
+.form-control.success input {
+  border-color: var(--success-color);
+}
+
+.form-control.error input {
+  border-color: var(--error-color);
+}
+
+
+.form button {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to right top,
+    #276a98,
+    #267dad,
+    #2391c2,
+    #1da5d7,
+    #12baeb
+  );
+  border: 2px solid
+    #276a98,
+    #267dad,
+    #2391c2,
+    #1da5d7,
+    #12baeb;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
