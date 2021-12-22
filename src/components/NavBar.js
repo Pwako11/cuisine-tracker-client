@@ -12,7 +12,8 @@ const NavBar = ({loggedIn}) => {
         
         <NavLink exact className="nav-link" to="/"  >Home  | </NavLink>  
         <NavLink exact className="nav-link" to="/dishes" > My Dishes | </NavLink>  
-        <NavLink exact className="nav-link" to="/dishes/new"> Add Dish </NavLink>
+        <NavLink exact className="nav-link" to="/dishes/new"> Add Dish  |</NavLink>
+        <NavLink exact className="nav-link" to="/search"> Search </NavLink>
         {loggedIn ? <Logout /> : null}
         
       </nav>
