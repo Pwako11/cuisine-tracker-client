@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Dishes from './Dish.js';
 
 const MainContainer = ({dish, region}) => {
 
